@@ -1,0 +1,34 @@
+{
+  "name": "learning-typescript",
+  "version": "1.0.0",
+  "description": "a quick lesson on typescript",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node lib/index",
+    "lint": "tslint ./src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dshaneg/learning-typescript.git"
+  },
+  "keywords": [
+    "typescript",
+    "learn",
+    "tutorial"
+  ],
+  "author": "Shane Gibbons",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dshaneg/learning-typescript/issues"
+  },
+  "homepage": "https://github.com/dshaneg/learning-typescript#readme",
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
+}
