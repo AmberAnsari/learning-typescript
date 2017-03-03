@@ -2,7 +2,11 @@
 
 This repo contains some material to teach a quick intro to typescript.
 
-- Be sure to check out [the official TypeScript site](https://www.typescriptlang.org/) for all the goods.
+Be sure to check out [the official TypeScript site](https://www.typescriptlang.org/) for all the goods.
+
+Before we go on, let's give some props where props are due: Check out [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg).
+
+> He was the original author of **Turbo Pascal** and the chief architect of **Delphi**. He currently works for Microsoft as the lead architect of **C#** and core developer on ***TypeScript***.
 
 ## Getting Started
 
