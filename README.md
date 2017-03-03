@@ -27,16 +27,22 @@ Notice that there isn't anything special going on here besides the fact that we 
 The thing about TypeScript is that nothing will run it directly. It needs to be *compiled*. But we don't compile it into a binary format or even an intermediate language like with .net. TypeScript compiles to *Javascript*. Let's compile `greeter.ts`.
 
 ```bash
-tsc greeter.ts
+tsc 01-naked/greeter.ts
 ```
 
 Now, you should see `greeter.js` in your working folder. Congratulations! You just compiled your first Naked TypeScript application!
+
+Why not run it?
+
+```bash
+node 01-naked/greeter
+```
 
 ### Let's add some clothes (Type Annotations)
 
 Naked TypeScript is boring. Let's tell the compiler that the person being passed to our greeter function should be a string.
 
-**NOTE**: I jumped the gun and added the `exports` keyword to the function in this step (spoilers!) because if I didn't, then the compiler complained that I defined the function multiple times (since the naked version of greeter uses the same name as the clothed one). We haven't explored modules yet (but we create one just by exporting something), so everything we're building is global, and without creating these new greeter files as modules, we get naming collisions. Just go with it for now.
+**NOTE**: I jumped the gun and added the `exports` keyword to the function in this step (spoilers!) because if I didn't, then the compiler complained that I defined the function multiple times (since the naked version of greeter uses the same name as the clothed one). We haven't explored modules yet, so everything we're building is global, and without creating these new greeter files as modules, we get naming collisions. We create a module simply by exporting or importing something. Just go with it for now and we'll explore modules later.
 
 Here's the file: [greeter.ts](02-clothed/greeter.ts). Compile and run it to verify that it works.
 
@@ -80,6 +86,19 @@ node 03-interface/greeter
 
 It's also worthwhile to take a look at the generated Javascript. Note that the interface doesn't show up here--it's just a definition for the compiler to check against.
 
+### Classes and Students and Stuff
+
+Now that we've discovered interfaces, let's take a look at classes. If you've already explored the new class syntax of JavaScript, this part will be super familiar.
+
+Open up [greeter.ts](04-class/greeter.ts) and poke around a bit. Notice that in the constructor we mark each parameter as public and annotate it with a type. The public tag will produce a public property with the same name as the parameter. (That's why TypeScript isn't complaining that the Student isn't implementing the Person interface!)
+
+Compile it, run it, and examine the generated javascript. You shouldn't get any surprises.
+
+```bash
+tsc 04-class/greeter.ts
+node 04-class/greeter
+```
+
 ### The editor gets better with TypeScript
 
 Take the latest class example and play around with it in Visual Studio Code. Notice that intellisense works much better with types defined. While TypeScript doesn't require you to annotate everything, the more you annotate, the more the editor will be able to help you out.
@@ -88,9 +107,9 @@ Take the latest class example and play around with it in Visual Studio Code. Not
 
 To really dig in, you'll want to read through [The Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html). This document isn't really that big, and has pretty much everything you need to know about writing TypeScript. In this section we'll cover a few topics to get you rolling and whet your appetite.
 
-### Type Annotations
+### Type Annotations beyond string
 
-Javascript does understand types; however it just doesn't type your variables statically. TypeScript allows you to annotate your variables so that you can't accidentally impose a value of the wrong type onto a variable. The basic types that you can annotate your variables with are described perfectly well in the Handbook, so I'll just leave that link here:
+Javascript does understand types; it just doesn't type your variables statically. TypeScript allows you to annotate your variables so that you can't accidentally impose a value of the wrong type onto a variable. The basic types that you can annotate your variables with are described perfectly well in the Handbook, so I'll just leave that link here:
 
 [Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html). Read it; learn it; love it.
 
@@ -117,6 +136,28 @@ I've already done this for [src/index.ts](src/index.ts), so open it in the edito
 
 See [Project Configuration](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
+I've set up a tsconfig.json for this project, that will compile only those files in the `src` folder, and send the compiled output to the `lib` folder. All you have to do to compile the `src` folder is:
+
+```bash
+tsc
+```
+
+TypeScript looks for the tsconfig.json file and uses the contents to decide how to proceed. Command line parameters will override the file, however.
+
 ### Linting
 
 [TSLint](https://palantir.github.io/tslint/) is the linter of choice for TypeScript. It's very similar to ESLint, only not as mature.
+
+I've included a sample tslint.json configuration file, as well as an npm script that runs the linter. To run it, type
+
+```bash
+npm run lint
+```
+
+Also, if you're using Visual Studio Code, be sure to install the TSLint extension.
+
+## Don't Stop Here
+
+Now go out and play around with TypeScript--dig into the nooks and crannies, and build something cool and useful.
+
+For a much bigger example that uses TypeScript, check out [Text Adventure](https://github.com/dshaneg/text-adventure), an unfinished project that I converted from Javascript to TypeScript. Feel free to fork it and play around. It isn't finished, but it is functional.
